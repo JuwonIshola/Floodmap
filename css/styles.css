@@ -1,0 +1,25 @@
+/* This code is for the Logo */
+strong{
+   color:#47B5FF;
+   font-size:20px;
+   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/* This code reduce the padding on the navbar */
+.container-fluid{
+   padding: 0px;
+}
+
+/* This code is used to set the specific width of the screen to fit the map */
+
+#map { 
+   height: calc(100vh - 57px); 
+   position: relative;
+}
+
+#coordinate{
+   position: absolute;
+   left: 40%;
+   background: #fff;
+   bottom:0;
+   z-index: 99999;
+ }

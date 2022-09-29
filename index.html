@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flood</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+      crossorigin=""
+    />
+    <link rel="icon" type="image/png" href="favicon_io\Doc.png" />
+    <link rel="stylesheet" href="bootstrap\css\bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css\styles.css" />
+    <link rel="stylesheet" href="js\index.js" />
+  </head>
+  <body>
+    <!-- The bounding box or container that houses the content -->
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <img
+          src="favicon_io\Logo.png"
+          width="25"
+          height="30"
+          class="d-inline-block align-top"
+          alt=""
+        />
+        <strong>ater</strong>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">About Us</a>
+            </li>
+          </ul>
+        </div>
+        <form class="form-inline">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+      </nav>
+    </div>
+
+
+    <!-- This code specifies the container for the map -->
+    <div id="col-md-12" style="padding: 0px;">
+      <div class="box" id="map"></div>
+
+      <div id="coordinate"></div>
+   </div>
+    
+
+    <!-- Leaflet script -->
+    <script
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin=""
+    ></script>
+
+
+    <!-- Jquery script -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.js"
+      integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+      crossorigin="anonymous"
+    ></script>
+
+<!-- This code allows for adding data to your web application -->
+<script type="text/javascript" src="Data\Permanent_Waterbody.js"></script>
+<script type="text/javascript" src="Data\Post_Flood_Mask_2018.js"></script>
+<script type="text/javascript" src="Data\ROI.js"></script>
+<script type="text/javascript" src="Data\settlements.js"></script>
+
+<!-- Print to browser js link -->
+<script type="text/javascript" src="js\leaflet.browser.print.min.js"></script> 
+    
+
+    <!-- Javascript code -->
+    <script type="text/javascript" src="js\index.js"></script>
+  </body>
+</html>
