@@ -51,31 +51,81 @@ var googleStreets = L.tileLayer(
      subdomains: ["mt0", "mt1", "mt2", "mt3"],
    }
  );
+ // Adding styles to region boundary
+var regionStyle = {
+  color: "black",
+  fillColor: "white",
+  opacity: 0.4,
+};
+
+ // Adding flooded data
+var regionLayer = L.geoJson(region, {
+  style: regionStyle,
+  // onEachFeature: function (feature, layer) {
+  //   // adding a popup to all the features
+  //   layer.bindPopup(feature.properties.NAME);
+  // },
+});
+
+
+ var riverStyle = {
+  color: "blue",
+  fillColor: "blue",
+  weight: 1,
+};
+
+ // Adding River data
+var riverLayer = L.geoJson(Permanent, {
+  style: riverStyle,
+  // onEachFeature: function (feature, layer) {
+  //   // adding a popup to all the features
+  //   layer.bindPopup(feature.properties.NAME);
+  // },
+});
+
+var placesStyle = {
+  color: "black",
+  fillColor: "black",
+  weight: 1,
+  radius: 5,
+};
+
+
+
+var placeslayer = L.geoJson(settlements, {
+  pointToLayer: function (feature, latlng) {
+    return L.circleMarker(latlng, placesStyle);
+  },
+  onEachFeature: function (feature, layer) {
+    // adding a popup to all the regions
+    layer.bindPopup(feature.properties.name);
+  },
+});
 
 
 //WMS CODE FOR ADDING REGION
-var regionWMS = L.tileLayer.wms(" http://localhost:8080/geoserver/Flood/wms", {
-    layers: '	Flood:ROI',
-    format: 'image/png',
-    transparent: true,
-    attribution:"JUWON ISHOLA"
-}).addTo(map)                    
+// var regionWMS = L.tileLayer.wms(" http://localhost:8080/geoserver/Flood/wms", {
+//     layers: '	Flood:ROI',
+//     format: 'image/png',
+//     transparent: true,
+//     attribution:"JUWON ISHOLA"
+// }).addTo(map)                    
 
 //WMS CODE FOR ADDING WATERBODY
-var riverWMS = L.tileLayer.wms(" http://localhost:8080/geoserver/Flood/wms", {
-    layers: '	Flood:Permanent-Waterbody',
-    format: 'image/png',
-    transparent: true,
-    attribution:"JUWON ISHOLA"
-}).addTo(map) 
+// var riverWMS = L.tileLayer.wms(" http://localhost:8080/geoserver/Flood/wms", {
+//     layers: '	Flood:Permanent-Waterbody',
+//     format: 'image/png',
+//     transparent: true,
+//     attribution:"JUWON ISHOLA"
+// }).addTo(map) 
 
 //WMS CODE FOR ADDING SETTLLEMENTS
-var placesWMS = L.tileLayer.wms(" http://localhost:8080/geoserver/Flood/wms", {
-    layers: '		Flood:Settlements',
-    format: 'image/png',
-    transparent: true,
-    attribution:"JUWON ISHOLA"
-}).addTo(map) 
+// var placesWMS = L.tileLayer.wms(" http://localhost:8080/geoserver/Flood/wms", {
+//     layers: '		Flood:Settlements',
+//     format: 'image/png',
+//     transparent: true,
+//     attribution:"JUWON ISHOLA"
+// }).addTo(map) 
 
 var floodStyle = {
   color: "red",
@@ -104,11 +154,10 @@ var baseLayers = {
 
  // // To add layers
 var overlays = {
-   "Region": regionWMS,
-   "Permanent Water": riverWMS,
-   "Settlements":placesWMS,
+   "Region": regionLayer,
+   "Permanent Water": riverLayer,
+   "Settlements":placeslayer,
    "Flood":  floodLayer,
-//    "Health Centers":healthWMS
  };
 
  // add layer control to map
